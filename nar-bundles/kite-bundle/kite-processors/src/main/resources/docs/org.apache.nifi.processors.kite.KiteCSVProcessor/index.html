@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<!--
+  ~ Licensed to the Apache Software Foundation (ASF) under one
+  ~ or more contributor license agreements.  See the NOTICE file
+  ~ distributed with this work for additional information
+  ~ regarding copyright ownership.  The ASF licenses this file
+  ~ to you under the Apache License, Version 2.0 (the
+  ~ "License"); you may not use this file except in compliance
+  ~ with the License.  You may obtain a copy of the License at
+  ~
+  ~   http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing,
+  ~ software distributed under the License is distributed on an
+  ~ "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  ~ KIND, either express or implied.  See the License for the
+  ~ specific language governing permissions and limitations
+  ~ under the License.
+  -->
+
+<html lang="en">
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+      http://www.apache.org/licenses/LICENSE-2.0
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<head>
+    <meta charset="utf-8" />
+    <title>KiteCSVProcessor</title>
+
+    <link rel="stylesheet" href="../../css/component-usage.css" type="text/css" />
+</head>
+
+<body>
+<!-- Processor Documentation ================================================== -->
+<h2>Description:</h2>
+<p>This processor reads CSV files and inserts each CSV row as a record in a Kite dataset.</p>
+<h2>Properties:</h2>
+<p>Required properties are in <b>bold</b>.</p>
+<ul>
+    <li>Hadoop Configuration Resources
+        <ul>
+            <li>A file or comma separated list of files which contains the Hadoop file system configuration.
+                Without this, Hadoop will search the classpath for a 'core-site.xml' and 'hdfs-site.xml' file or will
+                revert to a default configuration.</li>
+            <li>Default value: none</li>
+        </ul>
+    </li>
+    <li><b>Target dataset URI</b>
+        <ul>
+            <li>URI of the dataset where records are stored. View URIs are also allowed.</li>
+            <li>This property supports the NiFi expression language.</li>
+            <li>Default value: none</li>
+        </ul>
+    </li>
+    <li>CSV charset
+        <ul>
+            <li>Charset used to decode the incoming CSV files.</li>
+            <li>Default value: <code>utf8</code></li>
+        </ul>
+    </li>
+    <li>CSV delimiter
+        <ul>
+            <li>Delimiter character to separate CSV row fields.</li>
+            <li>Default value: <code>,</code></li>
+        </ul>
+    </li>
+    <li>CSV quote character
+        <ul>
+            <li>Character used to quote CSV fields. Quoted fields can contain reserved characters, like new-line or the delimiter.</li>
+            <li>Default value: <code>"</code></li>
+        </ul>
+    </li>
+    <li>CSV escape character
+        <ul>
+            <li>Character used to escape characters in quoted CSV fields. The quote character must be escaped to be inside a quoted field</li>
+            <li>Default value: <code>\</code></li>
+        </ul>
+    </li>
+    <li>Use CSV header line
+        <ul>
+            <li>Boolean that signals whether incoming CSV files have a header in the first line (after any lines are skipped). If not present, the schema field order is used to decode a CSV row.</li>
+            <li>Default value: <code>false</code></li>
+        </ul>
+    </li>
+    <li>Lines to skip
+        <ul>
+            <li>The number of lines at the beginning of the file to ignore before reading a header (if present) and data rows.</li>
+            <li>Default value: <code>0</code></li>
+        </ul>
+    </li>
+</ul>
+
+<h2>Relationships:</h2>
+<ul>
+    <li>success
+        <ul>
+            <li>Files that were successfully appended to the dataset are sent to this relationship.</li>
+        </ul>
+    </li>
+    <li>failure
+        <ul>
+            <li>Incoming files that could not be appended to the dataset are sent to this relationship.</li>
+        </ul>
+    </li>
+</ul>
+</body>
+</html>
